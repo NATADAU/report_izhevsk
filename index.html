@@ -49,10 +49,18 @@ nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,.08)}
 /* ФОТО HERO: photos/hero.jpg — широкий план зала пленарки (photo_20260527_154952.jpg) */
 .hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .hero-img::after{content:'';position:absolute;inset:0;
-  background:linear-gradient(to top, rgba(26,26,24,.82) 0%, rgba(26,26,24,.55) 40%, rgba(26,26,24,.15) 100%)}
+  background:linear-gradient(to top, rgba(26,26,24,.88) 0%, rgba(26,26,24,.60) 35%, rgba(26,26,24,.15) 70%, rgba(26,26,24,.05) 100%)}
+.hero-img::before{content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(135deg, rgba(29,107,107,.18) 0%, transparent 50%, rgba(176,106,40,.12) 100%);
+  animation:heroGrad 8s ease-in-out infinite alternate}
 .hero-kicker{position:relative;z-index:2;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,240,232,.7);margin-bottom:1rem;opacity:0;animation:up .8s .2s forwards}
 .hero-h1{position:relative;z-index:2;font-family:var(--ff-h);font-size:clamp(3rem,7.5vw,7.5rem);font-weight:900;line-height:.95;color:#f5f0e8;opacity:0;animation:up .9s .4s forwards}
-.hero-h1 em{font-style:italic;color:#e8a858}
+.hero-h1 em{font-style:italic;
+  background:linear-gradient(90deg,#e8a858,#f5c878,#c88030,#e8a858);
+  background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:shimmer 4s linear infinite}
 .hero-sub{position:relative;z-index:2;margin-top:1.8rem;font-size:clamp(.95rem,1.6vw,1.2rem);line-height:1.65;color:rgba(245,240,232,.72);max-width:44ch;opacity:0;animation:up .9s .6s forwards}
 .hero-stats{position:relative;z-index:2;margin-top:3rem;display:flex;gap:0;opacity:0;animation:up .9s .8s forwards}
 .hero-stat{padding:1.2rem 2.4rem;border-right:1px solid rgba(245,240,232,.18);text-align:center}
@@ -203,6 +211,14 @@ nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,.08)}
 
 footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;font-size:.68rem;letter-spacing:.08em;color:var(--ink3);background:var(--cream2)}
 
+
+/* ── HERO ORBS ── */
+.hero-orbs{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.hero-orb{position:absolute;border-radius:50%;mix-blend-mode:screen;filter:blur(60px)}
+.hero-orb1{width:400px;height:400px;background:rgba(29,107,107,.22);top:10%;left:5%;animation:float1 12s ease-in-out infinite}
+.hero-orb2{width:300px;height:300px;background:rgba(176,106,40,.18);top:30%;right:10%;animation:float2 15s ease-in-out infinite}
+.hero-orb3{width:200px;height:200px;background:rgba(29,107,107,.15);bottom:20%;left:40%;animation:float3 10s ease-in-out infinite}
+
 /* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal.on{opacity:1;transform:none}
@@ -211,6 +227,11 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
 @keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+@keyframes heroGrad{0%{opacity:0;transform:scale(1)}100%{opacity:1;transform:scale(1.04)}}
+@keyframes float1{0%,100%{transform:translateY(0) translateX(0) scale(1)}50%{transform:translateY(-28px) translateX(12px) scale(1.1)}}
+@keyframes float2{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(20px) translateX(-16px)}}
+@keyframes float3{0%,100%{transform:translateY(0) scale(1)}33%{transform:translateY(-18px) scale(1.15)}66%{transform:translateY(10px) scale(.9)}}
+@keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
 
 
 
@@ -295,6 +316,11 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
 
 <!-- ══ HERO ══ -->
 <section id="hero">
+  <div class="hero-orbs" aria-hidden="true">
+    <div class="hero-orb hero-orb1"></div>
+    <div class="hero-orb hero-orb2"></div>
+    <div class="hero-orb hero-orb3"></div>
+  </div>
   <div class="hero-img">
     <!-- ФОТО: photo_20260527_154952.jpg → переименуйте в photos/hero.jpg -->
     <img src="hero.jpg" alt="Зал пленарной сессии">
@@ -306,7 +332,7 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
     <div class="hero-stat"><div class="hero-stat-n">3</div><div class="hero-stat-l">дня</div></div>
     <div class="hero-stat"><div class="hero-stat-n">5</div><div class="hero-stat-l">экспертов</div></div>
     <div class="hero-stat"><div class="hero-stat-n">3</div><div class="hero-stat-l">учреждения</div></div>
-    <div class="hero-stat"><div class="hero-stat-n">182+</div><div class="hero-stat-l">фотографий</div></div>
+
   </div>
   <div class="scroll-cue"><span>вниз</span><div class="scroll-line"></div></div>
 </section>
@@ -488,7 +514,7 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
         </div>
         <!-- Файл: audio/meeting_parents.mp3 — положите рядом с HTML -->
         <audio id="meetingAudio" preload="metadata">
-          <source src="https://disk.360.yandex.ru/d/FCIDPGrL63JGMA" type="audio/mpeg">
+          <source src="meeting_parents.mp3" type="audio/mpeg">
         </audio>
         <div class="audio-controls">
           <button class="audio-play-btn" id="playBtn" onclick="togglePlay()">
@@ -542,9 +568,9 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
         <!-- ФОТО: из серии photo_20260530_223... → photos/day2-intern1.jpg — общий вид -->
         <figure class="mosaic-img m-main"><img src="day2-intern1.jpg" alt="Интернат Сарапул" loading="lazy" style="object-position:center top"><figcaption>РДСО «Италмас» Сарапул</figcaption></figure>
         <!-- ФОТО: photo_20260530_223600.jpg → photos/day2-intern2.jpg — диван с дыркой -->
-        <figure class="mosaic-img"><img src="day2-intern2.jpg" alt="Детали интерната" loading="lazy"><figcaption>Детали</figcaption></figure>
+        <figure class="mosaic-img"><img src="day2-intern2.jpg" alt="Детали" loading="lazy"><figcaption>Детали</figcaption></figure>
         <!-- ФОТО: из серии → photos/day2-intern3.jpg -->
-        <figure class="mosaic-img"><img src="day2-intern3.jpg" alt="Детали интерната" loading="lazy"><figcaption>Детали</figcaption></figure>
+        <figure class="mosaic-img"><img src="day2-intern3.jpg" alt="Детали" loading="lazy"><figcaption>Детали</figcaption></figure>
       </div>
     </div>
   </div>
@@ -554,7 +580,7 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
     <div class="block-inner">
       <div class="block-label reveal">💬 Тренинг: что не так и что делать</div>
       <div class="block-text reveal">
-        <p>В большом зале — задание для участников. Первый этап: составить список того, что в интернате устроено не так. Замечаний оказалось очень много. Второй этап — предложить реальные решения. Стало заметно, что <strong>критиковать намного проще</strong>, чем предлагать конкретные изменения. Координатор эмоционально сочувствовала директору интерната.</p>
+        <p>В большом зале — задание для участников. Первый этап: составить список того, что в учреждении устроено не так. Замечаний оказалось очень много. Второй этап — предложить реальные решения. Стало заметно, что <strong>критиковать намного проще</strong>, чем предлагать конкретные изменения. Координатор эмоционально сочувствовала директору учреждения.</p>
       </div>
       <!-- ФОТО: photo_2_20260530_231301.jpg → photos/day2-discussion.jpg — Битова с микрофоном -->
       <figure class="mosaic-img reveal" style="height:380px;margin-top:2rem">
@@ -606,7 +632,7 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
 
             <div class="gaganov-item">
               <div class="gaganov-item-num">§ 3.2</div>
-              <div class="gaganov-item-text">Выписка из интерната производится <strong>с разрешения Министерства труда и социальной защиты региона.</strong></div>
+              <div class="gaganov-item-text">Выписка из учреждения производится <strong>с разрешения Министерства труда и социальной защиты региона.</strong></div>
             </div>
 
             <div class="gaganov-item">
@@ -636,7 +662,7 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
 
             <div class="gaganov-item">
               <div class="gaganov-item-num">§ 6.2</div>
-              <div class="gaganov-item-text">Посетителям запрещается самостоятельно передвигаться по территории интерната и <strong>задавать вопросы о персональных данных проживающих.</strong></div>
+              <div class="gaganov-item-text">Посетителям запрещается самостоятельно передвигаться по территории учреждения и <strong>задавать вопросы о персональных данных проживающих.</strong></div>
             </div>
 
             <div class="gaganov-item">
@@ -682,7 +708,7 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
   <div class="block-tribune block-inner">
     <div class="block-label reveal">🎤 С трибуны</div>
     <div class="block-text reveal">
-      <p>Выехали в 6:45. Прибытие со сложностями, трансферы с задержкой. На экскурсию по интернату не успели — пройти подробно не получилось.</p>
+      <p>Выехали в 6:45. Прибытие со сложностями, трансферы с задержкой. На экскурсию по учреждению не успели — пройти подробно не получилось.</p>
       <p>Выступили все пятеро участников делегации ЦЛП. Темы: реабилитация и абилитация, снижение фармакотерапии, важность питания при дефиците веса, передача информации между сотрудниками, роль психолога как наблюдателя.</p>
     </div>
   </div>
@@ -695,13 +721,13 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
         <p>Самый тяжёлый эпизод командировки.</p>
         <p>Житель Л., 1996 года рождения. Весит <strong>19 кг</strong>. В медицинской карте — назначение аминазина. В ИПРА запись: «способность к передвижению не установлена». К карте приложена таблица измерений — заполненная, в том числе, за <strong>2027 год</strong>.</p>
         <p>Жительницы Т. и М. — обе лежачие, в состоянии крайнего истощения. Сотрудники сообщили, что получают усиленное питание уже две недели.</p>
-        <p>Битова А.Л.: такие маловесные подопечные есть в каждом интернате. Это системная проблема. В руках у Портновой была карта человека, который в 31 год весит 19 кг.</p>
+        <p>Битова А.Л.: такие маловесные подопечные есть в каждом учреждении. Это системная проблема. В руках у Портновой была карта человека, который в 31 год весит 19 кг.</p>
       </div>
 
       <!-- Мозаика — Воткинск -->
       <div class="mosaic mosaic-mix reveal">
         <!-- ФОТО: из серии photo_20260530_223... → photos/day3-1.jpg, day3-2.jpg, day3-3.jpg, day3-4.jpg, day3-5.jpg -->
-        <figure class="mosaic-img m-tall"><img src="day3-1.jpg" alt="Воткинск интернат" loading="lazy"><figcaption>Воткинск</figcaption></figure>
+        <figure class="mosaic-img m-tall"><img src="day3-1.jpg" alt="Воткинск" loading="lazy"><figcaption>Воткинск</figcaption></figure>
         <figure class="mosaic-img"><img src="day3-2.jpg" alt="" loading="lazy"></figure>
         <figure class="mosaic-img"><img src="day3-3.jpg" alt="" loading="lazy"></figure>
         <figure class="mosaic-img"><img src="day3-4.jpg" alt="" loading="lazy"></figure>
@@ -719,8 +745,8 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
       </div>
       <ul class="bullets reveal">
         <li><strong>Русаковская О.:</strong> «Задумайтесь, сколько вам лет» — предложила сместить акцент</li>
-        <li><strong>Кантор П.:</strong> интернат — место кризисного пребывания. Человек может жить дома, в квартире сопровождаемого проживания, в общине</li>
-        <li><strong>Битова А.Л.:</strong> даже если есть своя комната и своя мебель — это всё равно интернат</li>
+        <li><strong>Кантор П.:</strong> стационарное учреждение — место кризисного пребывания. Человек может жить дома, в квартире сопровождаемого проживания, в общине</li>
+        <li><strong>Битова А.Л.:</strong> даже если есть своя комната и своя мебель — это всё равно учреждение</li>
         <li><strong>Портнова А.:</strong> будут ли близкие наблюдать угасание человека, как это сейчас происходит</li>
       </ul>
     </div>
@@ -728,7 +754,8 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
 
   <!-- ПАУЗА — МУЗЕЙ + АЭРОПОРТ -->
   <div class="pause-strip reveal">
-    <div class="pause-strip-img ph"></div>
+    <!-- ФОТО: photo_27_2026-05-30_23-25-56.jpg → day3-gate.jpg — ворота "До свидания. До новых встреч!" -->
+    <img class="pause-strip-img" src="day3-gate.jpg" alt="До свидания. До новых встреч!" onerror="this.className='pause-strip-img ph'">
     <div class="pause-text"><em>Финал.</em> После семинара — музей Чайковского. Затем ужин. Потом выяснилось, что рейс задержан на два часа. <strong>В аэропорту решали кроссворды.</strong> Лидером признан Кантор.</div>
   </div>
 </div>
@@ -747,11 +774,11 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
       <div class="quote-author">Битова Анна Львовна</div>
     </div>
     <div class="quote-card reveal" style="transition-delay:.12s">
-      <div class="quote-text">«Критиковать намного проще, чем предлагать реальные решения. Я эмоционально сочувствовала директору интерната.»</div>
+      <div class="quote-text">«Критиковать намного проще, чем предлагать реальные решения. Я эмоционально сочувствовала директору учреждения.»</div>
       <div class="quote-author">Даутова Наталья — координатор</div>
     </div>
     <div class="quote-card reveal" style="transition-delay:.24s">
-      <div class="quote-text">«Даже если у человека есть своя комната и своя мебель — это всё равно интернат.»</div>
+      <div class="quote-text">«Даже если у человека есть своя комната и своя мебель — это всё равно учреждение.»</div>
       <div class="quote-author">Битова Анна Львовна</div>
     </div>
     <div class="quote-card reveal" style="transition-delay:.36s">
@@ -830,33 +857,35 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
     </div>
 
     <div class="mat-grid">
-      <a class="mat-card reveal" href="#" target="_blank">
-        <!-- href: ссылка на папку с презентациями в облаке -->
+      <a class="mat-card reveal" href="https://disk.360.yandex.ru/d/bVJ9K-e8Ig0s9A" target="_blank">
         <div class="mat-icon">📊</div>
         <div class="mat-title">Презентации экспертов</div>
-        <div class="mat-desc">PDF и PPTX всех спикеров ЦЛП — в облачной папке</div>
+        <div class="mat-desc">PDF и PPTX всех спикеров ЦЛП</div>
         <span class="mat-arrow">→</span>
       </a>
-      <a class="mat-card reveal" href="#" target="_blank" style="transition-delay:.08s">
-        <!-- href: ссылка на папку с фото в облаке -->
+      <a class="mat-card reveal" href="https://disk.360.yandex.ru/d/lEeQeORJvEGEdQ" target="_blank" style="transition-delay:.08s">
         <div class="mat-icon">📸</div>
-        <div class="mat-title">Папки с фотографиями</div>
-        <div class="mat-desc">182+ фото — личный архив координатора по дням и локациям</div>
+        <div class="mat-title">Фотографии</div>
+        <div class="mat-desc">Личный архив координатора — по дням и локациям</div>
         <span class="mat-arrow">→</span>
       </a>
-      <a class="mat-card reveal" href="#" target="_blank" style="transition-delay:.16s">
-        <!-- href: ссылка на документ Гаганова -->
+      <a class="mat-card reveal" href="Приложение_Гаганов_правила_ПНИ.docx" download style="transition-delay:.16s">
         <div class="mat-icon">⚖️</div>
         <div class="mat-title">Доклад Гаганова</div>
         <div class="mat-desc">Анализ правил внутреннего распорядка учреждений по регионам</div>
         <span class="mat-arrow">→</span>
       </a>
-      <a class="mat-card reveal" href="#" style="transition-delay:.24s">
-        <!-- href: ссылка на файл со списками участников -->
-        <div class="mat-icon">📋</div>
-        <div class="mat-title">Списки участников</div>
-        <div class="mat-desc">Регистрационные листы семинара, 6 страниц</div>
+      <a class="mat-card reveal" href="https://disk.360.yandex.ru/d/V55q1uKg_mHlQg" target="_blank" style="transition-delay:.24s">
+        <div class="mat-icon">🎬</div>
+        <div class="mat-title">Видеоролики и лекции</div>
+        <div class="mat-desc">Записи выступлений и лекций семинара</div>
         <span class="mat-arrow">→</span>
+      </a>
+      <a class="mat-card reveal" href="Отчёт_командировка_ПНИ_2026.docx" download style="transition-delay:.32s">
+        <div class="mat-icon">📄</div>
+        <div class="mat-title">Полный отчёт о командировке</div>
+        <div class="mat-desc">Word-документ — хронология, наблюдения, выводы</div>
+        <span class="mat-arrow">↓</span>
       </a>
     </div>
   </div>
