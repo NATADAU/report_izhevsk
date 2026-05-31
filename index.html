@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -458,13 +457,9 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
       <p>Битова А.Л. выступала последней — её торопили. Отдельно возмущалась: когда спросила, у кого из слушателей заперты двери в учреждениях — <strong>никто не признался.</strong></p>
     </div>
 
-    <!-- Мозаика — зал и участники -->
-    <div class="mosaic mosaic-team reveal">
-      <!-- ФОТО: photo_20260527_154952.jpg → photos/day1-hall.jpg — зал участников -->
-      <figure class="mosaic-img"><img src="day1-hall.jpg" alt="Зал семинара" loading="lazy"><figcaption>Пленарный зал</figcaption></figure>
-      <!-- ФОТО: photo_20260530_223544.jpg → photos/day1-banner2.jpg — ещё у баннера -->
-      <figure class="mosaic-img"><img src="day1-banner2.jpg" alt="Участники семинара" loading="lazy" style="object-position:center 20%"><figcaption>Участники</figcaption></figure>
-      <!-- ФОТО: mtmrmr_KP5A3095_resized.jpg → photos/day1-prof.jpg — профи портрет -->
+    <!-- Мозаика — участники у баннера -->
+    <div class="mosaic mosaic-hosp reveal">
+      <figure class="mosaic-img"><img src="day1-banner2.jpg" alt="Участники семинара" loading="lazy" style="object-position:center 25%"><figcaption>Участники</figcaption></figure>
       <figure class="mosaic-img"><img src="day1-prof.jpg" alt="" loading="lazy" style="object-position:center 30%"><figcaption>Профессиональная съёмка</figcaption></figure>
     </div>
 
@@ -583,7 +578,7 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
         <p>В большом зале — задание для участников. Первый этап: составить список того, что в учреждении устроено не так. Замечаний оказалось очень много. Второй этап — предложить реальные решения. Стало заметно, что <strong>критиковать намного проще</strong>, чем предлагать конкретные изменения. Координатор эмоционально сочувствовала директору учреждения.</p>
       </div>
       <!-- ФОТО: photo_2_20260530_231301.jpg → photos/day2-discussion.jpg — Битова с микрофоном -->
-      <figure class="mosaic-img reveal" style="height:380px;margin-top:2rem">
+      <figure class="mosaic-img reveal" style="height:520px;margin-top:2rem">
         <img src="day2-discussion.jpg" alt="Дискуссия в зале" loading="lazy">
         <figcaption>Битова А.Л. в дискуссии</figcaption>
       </figure>
@@ -593,7 +588,7 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
   <!-- ПАУЗА — ОБЕД -->
   <div class="pause-strip reveal">
     <!-- ФОТО: photo_31_20260530_224541.jpg → photos/day2-kama.jpg — двое у Камы -->
-    <img class="pause-strip-img" src="day2-kama.jpg" alt="Берег Камы" style="object-position:top" onerror="this.className='pause-strip-img ph'">
+    <img class="pause-strip-img" src="day2-kama.jpg" alt="Берег Камы" style="object-position:center 15%" onerror="this.className='pause-strip-img ph'">
     <div class="pause-text"><em>Пауза.</em> Обед в красивом ресторане на берегу Камы. Облака, вода, разговоры. Приятная передышка между насыщенными частями программы.</div>
   </div>
 
@@ -881,11 +876,15 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--rule);display:flex;justify
         <div class="mat-desc">Записи выступлений и лекций семинара</div>
         <span class="mat-arrow">→</span>
       </a>
-      <a class="mat-card reveal" href="Отчёт_командировка_ПНИ_2026.docx" download style="transition-delay:.32s">
-        <div class="mat-icon">📄</div>
-        <div class="mat-title">Полный отчёт о командировке</div>
-        <div class="mat-desc">Word-документ — хронология, наблюдения, выводы</div>
-        <span class="mat-arrow">↓</span>
+      <a class="mat-card reveal" href="Отчёт_командировка_ПНИ_2026.docx" download style="transition-delay:.32s;grid-column:1/-1;border-top:2px solid var(--teal)">
+        <div style="display:flex;align-items:center;gap:1.5rem">
+          <div style="font-size:2.4rem;flex-shrink:0">📄</div>
+          <div>
+            <div class="mat-title">Полный отчёт о командировке</div>
+            <div class="mat-desc">Word-документ — хронология по дням, экспертные наблюдения, отчёт Кантора, выводы координатора</div>
+          </div>
+        </div>
+        <span class="mat-arrow" style="opacity:1;transform:none;position:static;font-size:1rem;color:var(--teal);font-family:var(--ff-b);letter-spacing:.1em;text-transform:uppercase;margin-top:.8rem;display:block">↓ Скачать</span>
       </a>
     </div>
   </div>
